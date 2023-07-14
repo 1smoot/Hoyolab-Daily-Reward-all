@@ -1,0 +1,29 @@
+name: "Hoyolab Daily Sign"
+
+on:
+  schedule:
+    - cron: "0 18 * * *" # scheduled at 00:00 (UTC+8) everyday
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout master
+        uses: actions/checkout@v3
+
+      - name: Set up python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+          cache: "pip" # caching pip dependencies
+
+      - run: pip install git+https://github.com/thesadru/genshin.py.git@master
+
+      - name: Run check
+        env:
+          LTUID: ${{ secrets.LTUID }}
+          LTOKEN: ${{ secrets.LTOKEN }}
+        run: |
+          python3 ./main.py
