@@ -1,0 +1,31 @@
+name: "Hoyolab Daily Sign"
+
+on:
+  schedule:
+    - cron: "0 16 * * *" # scheduled at 00:00 (UTC+8) everyday
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout master
+        uses: actions/checkout@v3
+        with: 
+          repository: Haytsir/Hoyolab-Daily-Reward
+          ref: py
+
+      - name: Set up python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+          cache: "pip" # caching pip dependencies
+
+      - run: pip install -r requirements.txt
+
+      - name: Run check
+        env:
+          COOKIES: ${{ secrets.COOKIES }}
+        run: |
+          python3 ./main.py
