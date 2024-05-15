@@ -1,1 +1,2 @@
 git+https://github.com/thesadru/genshin.py.git@master
+qrcode>=7.*
