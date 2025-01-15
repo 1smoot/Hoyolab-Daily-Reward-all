@@ -66,7 +66,7 @@ async def claim_daily_reward(client: genshin.Client, game):
     except genshin.AccountNotFound:
         assert not signed_in
         return None, False, '계정을 찾을 수 없습니다.'
-    except genshin.GeetestTriggered:
+    except genshin.DailyGeetestTriggered:
         print('GeeTest(CAPTCHA) 요구됨')
         return None, False, 'GeeTest(CAPTCHA) 요구됨'
     except Exception as e:
