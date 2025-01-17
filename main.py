@@ -5,11 +5,11 @@ import patches
 import sys
 
 friendlyGameName = {
-    genshin.types.Game.HONKAI: '붕괴3rd',
+#    genshin.types.Game.HONKAI: '붕괴3rd',
     genshin.types.Game.GENSHIN: '원신',
-    genshin.types.Game.STARRAIL: '붕괴: 스타레일',
-    'nxx': '미해결사건부',
-    'nap': '젠레스 존 제로'
+    genshin.types.Game.STARRAIL: '붕괴: 스타레일'
+#    ,'nxx': '미해결사건부',
+#    'nap': '젠레스 존 제로'
 }
 
 async def main():
